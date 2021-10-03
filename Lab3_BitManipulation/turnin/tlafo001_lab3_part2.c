@@ -18,38 +18,42 @@ int main(void) {
 	DDRC = 0xFF; PORTC = 0x00;
     /* Insert your solution below */
 	unsigned char tempA;
+	unsigned char tempC;
 
     while (1) {
 	tempA = PINA;
+	tempC = 0x00;
 
 	if ((tempA & 0x0F) > 12)
 	{
-		PORTC = 0x3F;
+		tempC = 0x3F;
 	}
 	else if ((tempA & 0x0F) > 9)
 	{
-		PORTC = 0x3E;
+		tempC = 0x3E;
 	}
 	else if ((tempA & 0x0F) > 6)
 	{
-		PORTC = 0x3C;
+		tempC = 0x3C;
 	}
 	else if ((tempA & 0x0F) > 4)
 	{
-		PORTC = 0x38;
+		tempC = 0x38;
 	}
 	else if ((tempA & 0x0F) > 2)
 	{
-		PORTC = 0x70;
+		tempC = 0x70;
 	}
 	else if ((tempA & 0x0F) > 0)
 	{
-		PORTC = 0x60;
+		tempC = 0x60;
 	}
 	else
 	{
-		PORTC = 0x40;
+		tempC = 0x40;
 	}
+
+	PORTC = tempC;
     }
     return 1;
 }
